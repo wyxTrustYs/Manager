@@ -1,0 +1,6 @@
+*.exe
+*.ilk
+*.pdb
+Debug/
+Manager/Debug/
+*.VC.db
