@@ -27,7 +27,7 @@ public:
 // 实现
 protected:
 	HICON m_hIcon;
-
+	CStatusBar m_status;
 	// 生成的消息映射函数
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -37,4 +37,5 @@ protected:
 public:
 //	CTabCtrl m_TabCtrl;
 	CMyTabCtrl m_TabCtrl;
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };

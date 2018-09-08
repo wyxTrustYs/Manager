@@ -15,7 +15,7 @@ IMPLEMENT_DYNAMIC(CDialogHeap, CDialogEx)
 CDialogHeap::CDialogHeap(int PID, CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOGHEAP, pParent)
 {
-	this->nPID = PID;
+	this->nPID = (DWORD)PID;
 }
 
 CDialogHeap::~CDialogHeap()
@@ -49,14 +49,16 @@ BOOL CDialogHeap::OnInitDialog()
 	TCHAR buff[100] = { 0 };
 	TCHAR SHeapID[20] = { 0 };
 	TCHAR HeapSpace[20] = { 0 };
-	HANDLE hHeapSnap = CreateToolhelp32Snapshot(TH32CS_SNAPHEAPLIST, GetCurrentProcessId());
+	//	DWORD tmpid = GetCurrentProcessId();
+	HANDLE hHeapSnap = CreateToolhelp32Snapshot(TH32CS_SNAPHEAPLIST, nPID);
 
 	hl.dwSize = sizeof(HEAPLIST32);
 
 	if (hHeapSnap == INVALID_HANDLE_VALUE)
 	{
-		_stprintf_s(buff, 200, L"CreateToolhelp32Snapshot failed (%d)", GetLastError());
-		MessageBox(buff, L"ERROR", 0);
+		//_stprintf_s(buff, 200, L"CreateToolhelp32Snapshot failed (%d)", GetLastError());
+		MessageBox(L"CreateToolhelp32Snapshot failed", 0, 0);
+		EndDialog(0);
 		return FALSE;
 	}
 
@@ -69,7 +71,7 @@ BOOL CDialogHeap::OnInitDialog()
 			ZeroMemory(&he, sizeof(HEAPENTRY32));
 			he.dwSize = sizeof(HEAPENTRY32);
 
-			if (Heap32First(&he, GetCurrentProcessId(), hl.th32HeapID))
+			if (Heap32First(&he, nPID, hl.th32HeapID))
 			{
 // 				do
 // 				{

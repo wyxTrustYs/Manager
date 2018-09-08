@@ -184,13 +184,14 @@ void CDialogA::On32786()
 	delete md;
 }
 
-
+//获取堆信息
 void CDialogA::On32787()
 {
 	// TODO: 在此添加命令处理程序代码
 	int i = m_ListCtrlA.GetSelectionMark();
 	int PID = _tstoi(m_ListCtrlA.GetItemText(i, 1));
 	CDialogHeap* heap = new CDialogHeap(PID);
+	
 	heap->DoModal();
 	delete heap;
 }

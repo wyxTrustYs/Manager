@@ -190,6 +190,7 @@
     <ClInclude Include="DialogC.h" />
     <ClInclude Include="DialogHeap.h" />
     <ClInclude Include="DialogSubThread.h" />
+    <ClInclude Include="DialogVsClear.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="ManagerDlg.h" />
     <ClInclude Include="ModuleDialog.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="DialogC.cpp" />
     <ClCompile Include="DialogHeap.cpp" />
     <ClCompile Include="DialogSubThread.cpp" />
+    <ClCompile Include="DialogVsClear.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="ManagerDlg.cpp" />
     <ClCompile Include="ModuleDialog.cpp" />

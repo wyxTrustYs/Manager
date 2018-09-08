@@ -23,6 +23,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl CListHeap;
-	int nPID;
+	DWORD nPID;
 	virtual BOOL OnInitDialog();
 };
